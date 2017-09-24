@@ -87,6 +87,7 @@ Util.extend(SimuScroll, Core, {
     self.content.style.transformOrigin = "";
     self.off("touchstart mousedown", self._ontouchstart);
     self.off("touchmove", self._ontouchmove);
+    window.removeEventListener('resize', self._resize)
     self.destroyScrollBars();
   },
   /**
@@ -252,6 +253,14 @@ Util.extend(SimuScroll, Core, {
     self.isRealScrollingY = false;
     self.isRealScrollingY = false;
   },
+  _resize: function () {
+    var self = this;
+    setTimeout(function() {
+        self.resetSize();
+        self.boundryCheck(0);
+        self.render();
+    }, 100);
+  },
   _bindEvt: function() {
     SimuScroll.superclass._bindEvt.call(this);
     var self = this;
@@ -266,13 +275,7 @@ Util.extend(SimuScroll, Core, {
     self.on("pan", self._onpan, self);
     self.on("panend", self._onpanend, self);
     //window resize
-    window.addEventListener("resize", function(e) {
-      setTimeout(function() {
-        self.resetSize();
-        self.boundryCheck(0);
-        self.render();
-      }, 100);
-    }, self);
+    window.addEventListener("resize", self._resize);
 
     return this;
   },
