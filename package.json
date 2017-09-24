@@ -1,6 +1,6 @@
 {
-  "name": "xscroll",
-  "version": "3.1.3",
+  "name": "xscroll-plus",
+  "version": "0.0.2",
   "devDependencies": {
     "amdclean": "^2.3.0",
     "grunt": "^0.4.5",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:huxiaoqi567/xscroll.git"
+    "url": "git@github.com:weizs/xscroll.git"
   },
   "keywords": [
     "xscroll"
@@ -36,7 +36,7 @@
   "author": "huxiaoqi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/huxiaoqi567/xscroll/issues"
+    "url": "https://github.com/weizs/xscroll/issues"
   },
-  "homepage": "https://github.com/huxiaoqi567/xscroll"
+  "homepage": "https://github.com/weizs/xscroll"
 }

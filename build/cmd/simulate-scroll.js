@@ -276,7 +276,7 @@ Util.extend(SimuScroll, Core, {
     self.on("pan", self._onpan, self);
     self.on("panend", self._onpanend, self);
     //window resize
-    window.addEventListener("resize", self._resize);
+    window.addEventListener("resize", self._resize.bind(self));
 
     return this;
   },
