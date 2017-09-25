@@ -87,7 +87,6 @@ Util.extend(SimuScroll, Core, {
     self.content.style.transformOrigin = "";
     self.off("touchstart mousedown", self._ontouchstart);
     self.off("touchmove", self._ontouchmove);
-    window.removeEventListener('resize', self._resize)
     self.destroyScrollBars();
   },
   /**
@@ -253,14 +252,6 @@ Util.extend(SimuScroll, Core, {
     self.isRealScrollingY = false;
     self.isRealScrollingY = false;
   },
-  _resize: function () {
-    var self = this;
-    setTimeout(function() {
-        self.resetSize();
-        self.boundryCheck(0);
-        self.render();
-    }, 100);
-  },
   _bindEvt: function() {
     SimuScroll.superclass._bindEvt.call(this);
     var self = this;
@@ -274,9 +265,6 @@ Util.extend(SimuScroll, Core, {
     self.on("panstart", self._onpanstart, self);
     self.on("pan", self._onpan, self);
     self.on("panend", self._onpanend, self);
-    //window resize
-    window.addEventListener("resize", self._resize.bind(self));
-
     return this;
   },
   _ontouchstart: function(e) {
@@ -362,6 +350,12 @@ Util.extend(SimuScroll, Core, {
     self.__topstart = null;
     self.__leftstart = null;
     return self;
+  },
+  resize: function () {
+    var self = this;
+    self.resetSize();
+    self.boundryCheck(0);
+    self.render();
   },
   /**
    * judge the scroller is out of boundry horizontally and vertically
